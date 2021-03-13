@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1340
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "TraderScalper", "TraderScalper.pyproj", "{DF457BC4-9E7C-453F-B791-8F9EAD27EB91}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF457BC4-9E7C-453F-B791-8F9EAD27EB91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF457BC4-9E7C-453F-B791-8F9EAD27EB91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {06975DB4-73BC-476D-8F55-8C76DF4FDB4D}
+	EndGlobalSection
+EndGlobal
