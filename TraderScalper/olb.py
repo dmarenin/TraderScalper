@@ -113,8 +113,44 @@ def get_open_book_detail(ex_code):
 
     return result
 
-def create_order():
-    url = f"""{url_trade}/Trade/CreateOrder?...."""
+def create_order(account, ex_code, order):
+    board_code = ex_code['Board']['Code']
+
+    exchange_code = ex_code['Security']['ExchangeCode']
+    security_exchange_code = ex_code['Security']['ExchangeCode']
+    market_code = ex_code['Security']['MarketCode']
+    security_code = ex_code['Security']['Code']
+
+    account_number = account['SrcAccount']
+    accounts, account_key = account['AccountKey'], account['AccountKey']
+
+    is_buy_operation = order['is_buy_operation']
+    is_swap_order = order['is_swap_order']
+    s_volume = order['s_volume']
+    price = order['price']
+    is_market_price = order['is_market_price']
+    total_swap = order['total_swap']
+    total = order['total']
+
+    payload = f"""ExchangeCode={exchange_code}&SecurityExchangeCode={security_exchange_code}&BoardCode={board_code}&MarketCode={market_code}&AccountNumber={account_number}&SecurityCode={security_code}&isBuyOperation={is_buy_operation}&isSwapOrder={is_swap_order}&Accounts={accounts}&AccountKey={account_key}&sVolume={s_volume}&Price={price}&isMarketPrice={is_market_price}&TotalSwap={total_swap}&
+    Total={total}""" #cVolume=100000&
+
+    url = f"""{url_trade}/CreateOrder?{payload}"""
+
+    result = {}
+
+    try:
+        r = session.post(url, headers=headers)
+    except:
+        return result
+
+    #soup = BeautifulSoup(r.content)
+
+    #soup.find_all(class_="ui-state-highlight ui-corner-all")
+
+    result = r.content
+
+    return result
 
 def get_packet(account):
     payload = f"""SrcAccount={account['SrcAccount']}&SrcAccount_placeId={account['SrcAccount_placeId']}&AccountKey={account['AccountKey']}"""
