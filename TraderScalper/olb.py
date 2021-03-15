@@ -103,14 +103,9 @@ def get_open_book_detail(ex_code):
 
     soup = BeautifulSoup(r.content)
 
-    table_rows = soup.find_all("tr")
-    for row in table_rows:
-        vals = row.text.split()
-
-        if row.attrs['class'][0]=='openbook-buy':
-            result.append({'type':'buy', 'price':vals[1], 'count':vals[0]})
-        else:
-            result.append({'type':'sell', 'price':vals[0], 'count':vals[1]})
+    open_book_table = soup.find_all(class_="open-book-table")
+    if len(open_book_table)>0:
+        result = table_to_list(open_book_table[0])
 
     soup = None
 
@@ -308,7 +303,12 @@ def get_t_head_struct(table):
         rows = t_head[0].findAll('tr')
         vals = []
 
-        if len(rows)==1:
+        if len(rows)==0:
+            rows_root_el = t_head[0].findAll('th')
+            for row_root_el in rows_root_el:
+                vals.append(row_root_el.text)
+
+        elif len(rows)==1:
             rows_root_el = rows[0].findAll('th')
             for row_root_el in rows_root_el:
                 vals.append(row_root_el.text)
