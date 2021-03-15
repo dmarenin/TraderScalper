@@ -5,3 +5,4 @@ TraderScalper/TraderScalper.pyproj
 TraderScalper/.vs/TraderScalper/v15/.suo
 TraderScalper/olb.log
 TraderScalper/todo
+*.log
