@@ -152,6 +152,26 @@ def create_order(account, ex_code, order):
 
     return result
 
+def get_orders_detail(account):
+    payload = f"""SrcAccount={account['SrcAccount']}&PlaceId={account['SrcAccount_placeId']}&AccountKey={account['AccountKey']}"""
+
+    url = f"""{url_trade}/GetOrdersDetail?{payload}"""
+
+    result = []
+
+    try:
+        r = session.get(url, headers=headers)
+    except:
+        return result
+
+    soup = BeautifulSoup(r.content)
+
+    data_table = soup.find_all(class_="data-table")
+    if len(data_table)>0:
+        result = table_to_list(data_table[0])
+
+    return result
+
 def get_packet(account):
     payload = f"""SrcAccount={account['SrcAccount']}&SrcAccount_placeId={account['SrcAccount_placeId']}&AccountKey={account['AccountKey']}"""
 
